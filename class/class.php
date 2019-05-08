@@ -60,6 +60,30 @@ class Registros{
             //  }
     }
 
+    public function updatePersonal($idreg,$name_user,$phone_user,$address_user,$age_user,$status_civil,$pray_user,$name_guest_user,$phone_guest_user,$comment_guest_user,$sector,$supervisor,$lider,$id)
+    {
+
+        $sql = "update user_personal set user_name_p = '$name_user', user_phone_p = '$phone_user', user_address_p = '$address_user', user_age_p = '$age_user', user_statuscivil_p = '$status_civil', user_pray_p = '$pray_user', user_guests_by_p = '$name_guest_user',user_phone_by_p = '$phone_guest_user', user_comment_by_p = '$comment_guest_user', user_sector = '$sector', user_supervisor = '$supervisor', user_lider ='$lider',id_user = '$id' where id_userp = '$idreg'";
+        mysqli_query(Conectar::conecta(),$sql);
+        echo "<script type='text/javascript'>
+            alert('El registro ha sido añadido satisfactoriamente');
+            window.location='tables.php';
+            </script>";
+
+    }
+
+    public function listarPersonalxId($id)
+    {
+
+        $sql = "select * from user_personal where id_userp = '$id'";
+        $res = mysqli_query(Conectar::conecta(),$sql);
+        while ($reg = mysqli_fetch_assoc($res))
+        {
+            $this->datos[] = $reg;
+        }
+        return $this->datos;
+    }
+
     public function registerTip($name_tip,$comment_tip)
     {
 
