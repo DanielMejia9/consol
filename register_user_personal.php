@@ -13,15 +13,13 @@ if (!isset($_SESSION['k_username'])) {
         $con =  $conecta->conecta();
         $reg = new Registros();
         $mensager = '';
-       
-  
+
+
         if (isset($_GET["id"])) {
           $rw = $reg->listarPersonalxId($_GET["id"]);
-        }
-        else if (isset($_POST["actualizar"]) and $_POST["actualizar"] == "si") {
+        } else if (isset($_POST["actualizar"]) and $_POST["actualizar"] == "si") {
           $reg->updatePersonal($_POST["id"], $_POST["name_user"], $_POST["phone_user"], $_POST["address_user"], $_POST["age_user"], $_POST["status_civil"], $_POST['pray_user'], $_POST['name_guest_user'], $_POST['phone_guest_user'], $_POST['comment_guest_user'], $_POST['sector'], $_POST['supervisor'], $_POST['lideres'], $_SESSION['id']);
-        }
-        else{
+        } else {
           if (isset($_POST["guardar"]) and $_POST["guardar"] == "si") {
 
             if ($_POST["name_user"] == '' || $_POST["phone_user"] == '' || $_POST["address_user"] == '' || $_POST["age_user"] == '' || $_POST["status_civil"] == '' ||  $_POST['sector'] == '0' || $_POST['supervisor'] == '0' || $_POST['lideres'] == '0') {
@@ -32,7 +30,7 @@ if (!isset($_SESSION['k_username'])) {
             }
           }
         }
-        
+
         $sector = $reg->listSector();
         $super  = $reg->listSupervisor();
         $lider  = $reg->listLider();
@@ -59,7 +57,6 @@ if (!isset($_SESSION['k_username'])) {
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -89,20 +86,26 @@ if (!isset($_SESSION['k_username'])) {
                 <div class="col-12 col-md-4">
                   <div class="form-group">
                     <label>Nombre <span class="star">*</span></label>
-                    <input type="text" class="form-control" id="name_user" name="name_user" value="<?php if(isset($_GET["id"])){ echo $rw[0]['user_name_p'];}?>" placeholder="Nombre del Creyente">
+                    <input type="text" class="form-control" id="name_user" name="name_user" value="<?php if (isset($_GET["id"])) {
+                                                                                                      echo $rw[0]['user_name_p'];
+                                                                                                    } ?>" placeholder="Nombre del Creyente">
                     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                   </div>
                 </div>
                 <div class="col-12 col-md-4">
                   <div class="form-group">
                     <label>Teléfono <span class="star">*</span></label>
-                    <input type="text" class="form-control" id="phone_user" name="phone_user" value="<?php if(isset($_GET["id"])){ echo $rw[0]['user_phone_p'];}?>" placeholder="Número telefónico del Creyente">
+                    <input type="text" class="form-control" id="phone_user" name="phone_user" value="<?php if (isset($_GET["id"])) {
+                                                                                                        echo $rw[0]['user_phone_p'];
+                                                                                                      } ?>" placeholder="Número telefónico del Creyente">
                   </div>
                 </div>
                 <div class="col-12 col-md-4">
                   <div class="form-group">
                     <label>Dirección <span class="star">*</span></label>
-                    <input type="text" class="form-control" id="address_user" name="address_user" value="<?php if(isset($_GET["id"])){ echo $rw[0]['user_address_p'];}?>" placeholder="Dirección del Creyente">
+                    <input type="text" class="form-control" id="address_user" name="address_user" value="<?php if (isset($_GET["id"])) {
+                                                                                                            echo $rw[0]['user_address_p'];
+                                                                                                          } ?>" placeholder="Dirección del Creyente">
                     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                   </div>
                 </div>
@@ -112,7 +115,9 @@ if (!isset($_SESSION['k_username'])) {
                 <div class="col-12 col-md-4">
                   <div class="form-group">
                     <label>Edad <span class="star">*</span></label>
-                    <input type="text" class="form-control" id="age_user" name="age_user"  value="<?php if(isset($_GET["id"])){ echo $rw[0]['user_age_p'];}?>" placeholder="Edad del Creyente">
+                    <input type="text" class="form-control" id="age_user" name="age_user" value="<?php if (isset($_GET["id"])) {
+                                                                                                    echo $rw[0]['user_age_p'];
+                                                                                                  } ?>" placeholder="Edad del Creyente">
                     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                   </div>
                 </div>
@@ -120,7 +125,7 @@ if (!isset($_SESSION['k_username'])) {
                   <div class="form-group">
                     <label>Estado Civil <span class="star">*</span></label>
                     <select class="form-control" id="status_civil" name="status_civil">
-                    <option value="0">--</option>
+                      <option value="0">--</option>
                       <option value="Soltero(a)">Soltero(a)</option>
                       <option value="Casado(a)">Casado(a)</option>
                       <option value="Divorciado(a)">Divorciado(a)</option>
@@ -133,7 +138,9 @@ if (!isset($_SESSION['k_username'])) {
                 <div class="col-12 col-md-4">
                   <div class="form-group">
                     <label>Motivo de Oración <span class="star">*</span></label>
-                    <input type="text" class="form-control" id="pray_user" name="pray_user" value="<?php if(isset($_GET["id"])){ echo $rw[0]['user_pray_p'];}?>" placeholder="Motivo de Oración del Creyente">
+                    <input type="text" class="form-control" id="pray_user" name="pray_user" value="<?php if (isset($_GET["id"])) {
+                                                                                                      echo $rw[0]['user_pray_p'];
+                                                                                                    } ?>" placeholder="Motivo de Oración del Creyente">
                     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                   </div>
                 </div>
@@ -143,20 +150,26 @@ if (!isset($_SESSION['k_username'])) {
                 <div class="col-12 col-md-4">
                   <div class="form-group">
                     <label>Nombre <span class="star">*</span></label>
-                    <input type="text" class="form-control" id="name_guest_user" name="name_guest_user" value="<?php if(isset($_GET["id"])){ echo $rw[0]['user_guests_by_p'];}?>" placeholder="Persona que lo invitó">
+                    <input type="text" class="form-control" id="name_guest_user" name="name_guest_user" value="<?php if (isset($_GET["id"])) {
+                                                                                                                  echo $rw[0]['user_guests_by_p'];
+                                                                                                                } ?>" placeholder="Persona que lo invitó">
                     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                   </div>
                 </div>
                 <div class="col-12 col-md-4">
                   <div class="form-group">
                     <label>Teléfono <span class="star">*</span></label>
-                    <input type="text" class="form-control" id="phone_guest_user" name="phone_guest_user" value="<?php if(isset($_GET["id"])){ echo $rw[0]['user_phone_by_p'];}?>" placeholder="Teléfono de quien lo invitó">
+                    <input type="text" class="form-control" id="phone_guest_user" name="phone_guest_user" value="<?php if (isset($_GET["id"])) {
+                                                                                                                    echo $rw[0]['user_phone_by_p'];
+                                                                                                                  } ?>" placeholder="Teléfono de quien lo invitó">
                   </div>
                 </div>
                 <div class="col-12 col-md-4">
                   <div class="form-group">
                     <label>Observaciones</label>
-                    <input type="text" class="form-control" id="comment_guest_user" name="comment_guest_user" value="<?php if(isset($_GET["id"])){ echo $rw[0]['user_comment_by_p'];}?>" placeholder="Observaciones">
+                    <input type="text" class="form-control" id="comment_guest_user" name="comment_guest_user" value="<?php if (isset($_GET["id"])) {
+                                                                                                                        echo $rw[0]['user_comment_by_p'];
+                                                                                                                      } ?>" placeholder="Observaciones">
                     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                   </div>
                 </div>
@@ -204,15 +217,14 @@ if (!isset($_SESSION['k_username'])) {
                 </div>
               </div>
               <?php
-               if(isset($_GET['id'])){
+              if (isset($_GET['id'])) {
                 echo '<input type="hidden" name="actualizar" id="actualizar" value="si">';
-                echo '<input type="hidden" name="id" id="id" value="'.$_GET['id'].'">';
-               }
-               else{
-                 echo '<input type="hidden" name="guardar" id="guardar" value="si">';
-               }
-               ?>
-              
+                echo '<input type="hidden" name="id" id="id" value="' . $_GET['id'] . '">';
+              } else {
+                echo '<input type="hidden" name="guardar" id="guardar" value="si">';
+              }
+              ?>
+
               <button type="submit" class="btn btn-primary">Agregar</button>
             </div>
           </form>
@@ -244,8 +256,6 @@ if (!isset($_SESSION['k_username'])) {
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- Logout Modal-->
-  <?php include "include/modal.php" ?>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -256,6 +266,7 @@ if (!isset($_SESSION['k_username'])) {
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+
 
 </body>
 
