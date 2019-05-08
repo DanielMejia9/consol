@@ -156,9 +156,9 @@ if (!isset($_SESSION['k_username'])) {
                           '<td>'
                           . $lis[$i]['id_user'] .
                           '</td>' .
-                          '<td>'.'<a href="register_user_personal.php?id='. $lis[$i]['id_userp'].'">'.'VER'.'</a>'.'</td>'.
-                          '</tr>'.
-                          '</a>';
+                          '<td>'.'<a class="btn btn-secondary btn-sm" href="register_user_personal.php?id='.$lis[$i]['id_userp'].'">'.'VER'.'</a>'.'</td>'.
+                          '</tr>'
+                          ;
                     }
 
                     ?>
