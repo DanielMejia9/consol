@@ -7,36 +7,36 @@ if (!isset($_SESSION['k_username'])) {
   <SCRIPT LANGUAGE="javascript">
     location.href = "404.html";
   </SCRIPT><?php
-        }
+          }
 
-        $conecta = new Conectar();
-        $con =  $conecta->conecta();
-        $reg = new Registros();
-        $mensager = '';
+          $conecta = new Conectar();
+          $con =  $conecta->conecta();
+          $reg = new Registros();
+          $mensager = '';
 
 
-        if (isset($_GET["id"])) {
-          $rw = $reg->listarPersonalxId($_GET["id"]);
-        } else if (isset($_POST["actualizar"]) and $_POST["actualizar"] == "si") {
-          $reg->updatePersonal($_POST["id"], $_POST["name_user"], $_POST["phone_user"], $_POST["address_user"], $_POST["age_user"], $_POST["status_civil"], $_POST['pray_user'], $_POST['name_guest_user'], $_POST['phone_guest_user'], $_POST['comment_guest_user'], $_POST['sector'], $_POST['supervisor'], $_POST['lideres'], $_SESSION['id']);
-        } else {
-          if (isset($_POST["guardar"]) and $_POST["guardar"] == "si") {
+          if (isset($_GET["id"])) {
+            $rw = $reg->listarPersonalxId($_GET["id"]);
+          } else if (isset($_POST["actualizar"]) and $_POST["actualizar"] == "si") {
+            $reg->updatePersonal($_POST["id"], $_POST["name_user"], $_POST["phone_user"], $_POST["address_user"], $_POST["age_user"], $_POST["status_civil"], $_POST['pray_user'], $_POST['name_guest_user'], $_POST['phone_guest_user'], $_POST['comment_guest_user'], $_POST['sector'], $_POST['supervisor'], $_POST['lideres'], $_SESSION['id']);
+          } else {
+            if (isset($_POST["guardar"]) and $_POST["guardar"] == "si") {
 
-            if ($_POST["name_user"] == '' || $_POST["phone_user"] == '' || $_POST["address_user"] == '' || $_POST["age_user"] == '' || $_POST["status_civil"] == '' ||  $_POST['sector'] == '0' || $_POST['supervisor'] == '0' || $_POST['lideres'] == '0') {
-              $mensager = "<div class='alert alert-danger' role='alert'>Por favor, rellene los campos.</div>";
-            } else {
-              $reg->registerPersonal($_POST["name_user"], $_POST["phone_user"], $_POST["address_user"], $_POST["age_user"], $_POST["status_civil"], $_POST['pray_user'], $_POST['name_guest_user'], $_POST['phone_guest_user'], $_POST['comment_guest_user'], $_POST['sector'], $_POST['supervisor'], $_POST['lideres'], $_SESSION['id']);
-              exit;
+              if ($_POST["name_user"] == '' || $_POST["phone_user"] == '' || $_POST["address_user"] == '' || $_POST["age_user"] == '' || $_POST["status_civil"] == '' ||  $_POST['sector'] == '0' || $_POST['supervisor'] == '0' || $_POST['lideres'] == '0') {
+                $mensager = "<div class='alert alert-danger' role='alert'>Por favor, rellene los campos.</div>";
+              } else {
+                $reg->registerPersonal($_POST["name_user"], $_POST["phone_user"], $_POST["address_user"], $_POST["age_user"], $_POST["status_civil"], $_POST['pray_user'], $_POST['name_guest_user'], $_POST['phone_guest_user'], $_POST['comment_guest_user'], $_POST['sector'], $_POST['supervisor'], $_POST['lideres'], $_SESSION['id'],$_POST['fecha']);
+                exit;
+              }
             }
           }
-        }
 
-        $sector = $reg->listSector();
-        $super  = $reg->listSupervisor();
-        $lider  = $reg->listLider();
+          $sector = $reg->listSector();
+          $super  = $reg->listSupervisor();
+          $lider  = $reg->listLider();
 
 
-        ?>
+          ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,6 +82,14 @@ if (!isset($_SESSION['k_username'])) {
           <?php echo $mensager; ?>
           <form action="register_user_personal.php" method="post">
             <div class="container">
+              <div class="row">
+                <div class="col-12 col-md-4">
+                  <?php
+                  $hoy = date("Y-m-d");
+                  ?>
+                  <input  class="form-control" name="fecha"  id="fecha" type="text" value="<?php print_r($hoy);?>" >
+                </div>
+              </div>
               <div class="row">
                 <div class="col-12 col-md-4">
                   <div class="form-group">

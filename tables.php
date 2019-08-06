@@ -65,7 +65,7 @@ if (!isset($_SESSION['k_username'])) {
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Datos del Personal</h6>
+              <a class="btn btn-primary" href="register_user_personal.php" >Agregar Personal</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -73,6 +73,7 @@ if (!isset($_SESSION['k_username'])) {
                   <thead>
                     <tr>
                       <th>ID</th>
+                      <th>Fecha </th>
                       <th>Nombre </th>
                       <th>Teléfono</th>
                       <th>Dirección</th>
@@ -92,6 +93,7 @@ if (!isset($_SESSION['k_username'])) {
                   <tfoot>
                     <tr>
                       <th>ID</th>
+                      <th>Fecha </th>
                       <th>Nombre </th>
                       <th>Teléfono</th>
                       <th>Dirección</th>
@@ -116,6 +118,9 @@ if (!isset($_SESSION['k_username'])) {
                         '<tr>' .
                           '<td>'.
                            $lis[$i]['id_userp'] .
+                          '</td>' .
+                          '<td>'.
+                           $lis[$i]['fecha'] .
                           '</td>' .
                           '<td>'
                           . $lis[$i]['user_name_p'] .
@@ -208,7 +213,7 @@ if (!isset($_SESSION['k_username'])) {
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="login.php">Logout</a>
         </div>
       </div>
     </div>

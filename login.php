@@ -24,7 +24,7 @@ if (isset($_POST["guardar"]) and $_POST["guardar"] == "si") {
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Consol - Login</title>
+  <title>Consolidación - Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -52,7 +52,7 @@ if (isset($_POST["guardar"]) and $_POST["guardar"] == "si") {
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome Consol!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Bienvenidos a Consolidación!</h1>
                   </div>
                   <form action="login.php" method="post" class="user">
                     <div class="form-group">

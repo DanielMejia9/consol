@@ -4,7 +4,10 @@ class Conectar
 {
     public static function conecta()
     {
-        $con = mysqli_connect("localhost", "root", "","consol");
+        /*$con = mysqli_connect("localhost", "root", "","consol");
+        return $con;*/
+
+        $con = mysqli_connect("localhost", "jirehpro_user", "MR2BZhiAXUZ=","jirehpro_consol");
         return $con;
     }
 }
@@ -32,6 +35,17 @@ class Registros{
             </script>";
         }
         else{
+
+        //Correo 
+        $destinatario = $email_user;
+        $asunto = "Registro Sistema de Consolidación";
+        $carta = "Acceso para el Sistema de Consolidación \n";
+        $carta.= "Correo: $email_user \n";
+        $carta.= "Contraseña: $password \n";
+        $carta.= "url: http://consolidacion.jirehpro.co/login.php \n";
+        mail ( $destinatario, $asunto, $carta); 
+
+
         $password = md5($password);
         $sql = "insert into user values(' ','$name_user','$email_user','$age_user','$phone_user','$address_user','$sector','$tip','$password')";
         mysqli_query(Conectar::conecta(),$sql);
@@ -43,10 +57,10 @@ class Registros{
         
     }
 
-    public function registerPersonal($name_user,$phone_user,$address_user,$age_user,$status_civil,$pray_user,$name_guest_user,$phone_guest_user,$comment_guest_user,$sector,$supervisor,$lider,$id)
+    public function registerPersonal($name_user,$phone_user,$address_user,$age_user,$status_civil,$pray_user,$name_guest_user,$phone_guest_user,$comment_guest_user,$sector,$supervisor,$lider,$id,$fecha)
     {
 
-        $sql = "insert into user_personal values(' ','$name_user','$phone_user','$address_user','$age_user','$status_civil','$pray_user','$name_guest_user','$phone_guest_user','$comment_guest_user','$sector','$supervisor','$lider','$id')";
+        $sql = "insert into user_personal values(' ','$name_user','$phone_user','$address_user','$age_user','$status_civil','$pray_user','$name_guest_user','$phone_guest_user','$comment_guest_user','$sector','$supervisor','$lider','$id','$fecha')";
         mysqli_query(Conectar::conecta(),$sql);
         echo "<script type='text/javascript'>
             alert('El registro ha sido añadido satisfactoriamente');
@@ -212,6 +226,36 @@ class Registros{
 
     public function listarPersonal(){
         $sql = "select * from user_personal ";
+        $res = mysqli_query(Conectar::conecta(),$sql);
+        while ($reg = mysqli_fetch_assoc($res))
+        {
+            $this->datos[] = $reg;
+        }
+        return $this->datos;
+    }
+
+    public function listarSector(){
+        $sql = "select * from sector ";
+        $res = mysqli_query(Conectar::conecta(),$sql);
+        while ($reg = mysqli_fetch_assoc($res))
+        {
+            $this->datos[] = $reg;
+        }
+        return $this->datos;
+    }
+
+    public function listarTipos(){
+        $sql = "select * from tip_user ";
+        $res = mysqli_query(Conectar::conecta(),$sql);
+        while ($reg = mysqli_fetch_assoc($res))
+        {
+            $this->datos[] = $reg;
+        }
+        return $this->datos;
+    }
+
+    public function listarUser(){
+        $sql = "select * from user ";
         $res = mysqli_query(Conectar::conecta(),$sql);
         while ($reg = mysqli_fetch_assoc($res))
         {

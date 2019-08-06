@@ -13,14 +13,18 @@ if (!isset($_SESSION['k_username'])) {
   $reg = new Registros();
   
   if (isset($_POST["guardar"]) and $_POST["guardar"] == "si") {
-    //Carácteres para la contraseña
+    /*//Carácteres para la contraseña
     $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
     $password = "";
     //Reconstruimos la contraseña segun la longitud que se quiera
     for ($i = 0; $i < 9; $i++) {
       //obtenemos un caracter aleatorio escogido de la cadena de caracteres
       $password .= substr($str, rand(0, 62), 1);
-    }
+    }*/
+
+    $logitud = 8;
+    $password = substr((microtime()), 1, $logitud);
+    echo $password;
     
     $reg->registerUser($_POST["name_user"], $_POST["email_user"], $_POST["age_user"], $_POST["phone_user"], $_POST["address_user"], $_POST['sector'], $_POST['tip_user'], $password);
     exit;

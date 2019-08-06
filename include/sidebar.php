@@ -49,7 +49,7 @@
   </li> -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="register_user.php"  aria-expanded="true" aria-controls="collapseTwo">
+    <a class="nav-link collapsed" href="tables-user.php"  aria-expanded="true" aria-controls="collapseTwo">
       <i class="fas fa-user-check"></i>
       <span>Usuario</span>
 
@@ -57,7 +57,7 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="register_user_personal.php"  aria-expanded="true" aria-controls="collapseTwo">
+    <a class="nav-link collapsed" href="tables.php"  aria-expanded="true" aria-controls="collapseTwo">
       <i class="fas fa-user"></i>
       <span>Personal</span>
 
@@ -65,14 +65,14 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="tipo.php"  aria-expanded="true" aria-controls="collapseTwo">
+    <a class="nav-link collapsed" href="tables-tipo.php"  aria-expanded="true" aria-controls="collapseTwo">
       <i class="fas fa-users-cog"></i>
       <span>Tipos usuario</span>
 
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link collapsed" href="sector.php"  aria-expanded="true" aria-controls="collapseTwo">
+    <a class="nav-link collapsed" href="tables-sector.php"  aria-expanded="true" aria-controls="collapseTwo">
       <i class="fas fa-map-marked-alt"></i>
       <span>Sector</span>
 
