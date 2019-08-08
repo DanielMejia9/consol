@@ -5,5 +5,5 @@ session_destroy();
 //echo 'Ha terminado la session <p><a href="index.php">index</a></p>';
 ?>
 <SCRIPT LANGUAGE="javascript">
-location.href = "login.php";
+location.href = "index.php";
 </SCRIPT>

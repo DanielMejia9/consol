@@ -186,7 +186,7 @@ if (!isset($_SESSION['k_username'])) {
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- Logout Modal-->
+  <!-- Cerrar sesión. Modal-->
   <?php include "include/modal.php" ?>
 
   <!-- Bootstrap core JavaScript-->

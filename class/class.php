@@ -4,11 +4,11 @@ class Conectar
 {
     public static function conecta()
     {
-        /*$con = mysqli_connect("localhost", "root", "","consol");
-        return $con;*/
-
-        $con = mysqli_connect("localhost", "jirehpro_user", "MR2BZhiAXUZ=","jirehpro_consol");
+        $con = mysqli_connect("localhost", "root", "","consol");
         return $con;
+
+      /*  $con = mysqli_connect("localhost", "jirehpro_user", "MR2BZhiAXUZ=","jirehpro_consol");
+        return $con;*/
     }
 }
 
@@ -36,14 +36,14 @@ class Registros{
         }
         else{
 
-        //Correo 
+        //Correo
         $destinatario = $email_user;
         $asunto = "Registro Sistema de Consolidación";
         $carta = "Acceso para el Sistema de Consolidación \n";
         $carta.= "Correo: $email_user \n";
         $carta.= "Contraseña: $password \n";
         $carta.= "url: http://consolidacion.jirehpro.co/login.php \n";
-        mail ( $destinatario, $asunto, $carta); 
+        mail ( $destinatario, $asunto, $carta);
 
 
         $password = md5($password);
@@ -54,7 +54,7 @@ class Registros{
             window.location='register_user.php';
             </script>";
         }
-        
+
     }
 
     public function registerPersonal($name_user,$phone_user,$address_user,$age_user,$status_civil,$pray_user,$name_guest_user,$phone_guest_user,$comment_guest_user,$sector,$supervisor,$lider,$id,$fecha)
@@ -177,7 +177,7 @@ class Registros{
         $res = mysqli_query(Conectar::conecta(),$sql);
         if($row = mysqli_fetch_array($res)){
             echo "<script type='text/javascript'>
-            window.location='index.php';
+            window.location='modulo.php';
             </script>";
 
             $_SESSION["k_username"] = $row['user_name'];
@@ -186,9 +186,9 @@ class Registros{
              } else {
                 echo "<script type='text/javascript'>
             alert('Error de usuario o password');
-            window.location='login.php';
+            window.location='index.php';
             </script>";
-           }  
+           }
     }
 
     public function countSector()
