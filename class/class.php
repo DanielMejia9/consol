@@ -42,7 +42,7 @@ class Registros{
         $carta = "Acceso para el Sistema de Consolidación \n";
         $carta.= "Correo: $email_user \n";
         $carta.= "Contraseña: $password \n";
-        $carta.= "url: http://consolidacion.jirehpro.co/login.php \n";
+        $carta.= "url: http://consolidacion.jirehpro.co/ \n";
         mail ( $destinatario, $asunto, $carta);
 
 
